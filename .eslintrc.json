@@ -1,0 +1,9 @@
+{
+    // rules are quite huge to inline there, .vue files are linted
+    "extends": "zardoy/vue",
+    "rules": {
+        "vue/multi-word-component-names": "off",
+        "no-negated-condition": "off"
+    },
+    "root": true
+}

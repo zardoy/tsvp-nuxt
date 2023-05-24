@@ -38,8 +38,8 @@ const pluginConfigProps = JSON.parse(runtimeConfig.public.configuration).propert
                     </tr>
                 </thead>
                 <template
-                    v-for="[key, { recommended, description }] of Object.entries(pluginConfigProps) as [string, any][]">
-                    <tr v-if="recommended !== undefined" class="py-4">
+                    v-for="[key, { recommended, description }] in Object.entries(pluginConfigProps) as [string, any][]">
+                    <tr v-if="recommended !== undefined" :key="key" class="py-4">
                         <td>
                             <code>"tsEssentialsPlugins.{{ key }}": {{ recommended === '' ? 'true' : `"${recommended}"` }}</code>
                         </td>

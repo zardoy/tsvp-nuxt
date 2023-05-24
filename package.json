@@ -6,11 +6,20 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint components/**/*.{ts,vue}"
   },
   "devDependencies": {
     "@types/node": "^18",
-    "nuxt": "^3.5.1"
+    "nuxt": "^3.5.1",
+    "eslint": "^8.9.0",
+    "eslint-config-zardoy": "^0.2.10",
+    "eslint-plugin-vue": "^8.4.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "@typescript-eslint/eslint-plugin": "5.12.0"
+    }
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.6.6",

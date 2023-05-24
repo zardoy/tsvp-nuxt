@@ -9,8 +9,6 @@ const scrollDownHint = ref<HTMLDivElement>()
 
 const featuresRef = ref()
 
-let mainContentStatic = false
-
 const updateBorder = () => {
     const scrollY = document.documentElement.scrollTop
     border.value!.style.filter = `blur(${Math.min(5, (600 - scrollY) / 300)}px)`
@@ -30,6 +28,7 @@ const updateBorder = () => {
         featuresEl.style.opacity = !initialContentVisible ? '1' : '0'
         featuresEl.style.pointerEvents = !initialContentVisible ? '' : 'none'
     }
+
     initialScreenContainer.value!.style.opacity = initialContentVisible ? '1' : '0'
     initialScreenContainer.value!.style.pointerEvents = initialContentVisible ? '' : 'none'
     outerContainer.value!.style.display = scrollY < mainContentAreaThreshold + 100 ? '' : 'none'
@@ -48,6 +47,7 @@ const updateBorder = () => {
     // featuringContainer.value!.style.position = mainContentStatic ? 'static' : ''
     // featuringContainer.value!.style.bottom = mainContentStatic ? 'unset' : ''
 }
+
 onMounted(() => {
     document.addEventListener('scroll', updateBorder, { passive: true, })
     updateBorder()
@@ -55,12 +55,12 @@ onMounted(() => {
 
 </script>
 <template>
-    <div class="main-outer-container" ref="outerContainer">
-        <div class="main-container" ref="initialScreenContainer">
+    <div ref="outerContainer" class="main-outer-container">
+        <div ref="initialScreenContainer" class="main-container">
             <div>
                 <div class="border-container">
                     <h1 class="title">TS</h1>
-                    <div ref="border" class="border"></div>
+                    <div ref="border" class="border" />
                 </div>
                 <div class="h-0">
                     <div class="flex justify-center space-x-2 pt-5">
@@ -69,11 +69,11 @@ onMounted(() => {
                         <a class="button bg-slate-300 text-black"
                             href="https://github.com/zardoy/typjescript-vscode-plugins">GitHub</a>
                     </div>
-                    <div class="scroll-down-container" ref="scrollDownHint">
+                    <div ref="scrollDownHint" class="scroll-down-container">
                         <div class="arrows-down">
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                            <div />
+                            <div />
+                            <div />
                         </div>
                     </div>
                 </div>
