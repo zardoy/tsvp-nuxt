@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { } from 'typescript-json-schema'
 import CogIcon from 'vue-material-design-icons/Cog.vue';
 import StarIcon from 'vue-material-design-icons/Star.vue';
 import CompassIcon from 'vue-material-design-icons/CompassOutline.vue';
 import VueMarkdown from 'vue-markdown-render'
 
-const config = useRuntimeConfig().public.configuration['properties']
+const runtimeConfig = useRuntimeConfig()
+const pluginConfigProps = JSON.parse(runtimeConfig.public.configuration).properties
 </script>
 <template>
     <div class="flex-col">
@@ -37,7 +37,8 @@ const config = useRuntimeConfig().public.configuration['properties']
                         <th>Extra note</th>
                     </tr>
                 </thead>
-                <template v-for="[key, { recommended, description }] of Object.entries(config) as [string, any][]">
+                <template
+                    v-for="[key, { recommended, description }] of Object.entries(pluginConfigProps) as [string, any][]">
                     <tr v-if="recommended !== undefined" class="py-4">
                         <td>
                             <code>"tsEssentialsPlugins.{{ key }}": {{ recommended === '' ? 'true' : `"${recommended}"` }}</code>
