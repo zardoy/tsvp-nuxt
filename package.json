@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint components/**/*.{ts,vue}"
+    "lint": "eslint \"components/**/*.{ts,vue}\""
   },
   "devDependencies": {
     "@types/node": "^18",
