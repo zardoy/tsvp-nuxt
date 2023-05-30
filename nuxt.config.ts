@@ -35,14 +35,14 @@ export default async () => {
     const pluginSetings = fs.readFileSync(configTypeJson, 'utf8');
 
     return defineNuxtConfig({
-        // experimental: {
-        //     typedPages: true,
-        // },
+        experimental: {
+            typedPages: true,
+        },
         runtimeConfig: {
             public: {
                 configuration: pluginSetings,
+                repo: process.env.GITHUB_REPOSITORY
             },
-            // test: 5
         },
         modules: [
             "@nuxtjs/tailwindcss",

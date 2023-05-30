@@ -50,6 +50,7 @@ const pluginConfigProps = JSON.parse(runtimeConfig.public.configuration).propert
                     </tr>
                 </template>
             </table>
+            <div class="mt-5 text-sm">Build with Nuxt. <a class="font-bold" :href="`https://github.com/${runtimeConfig.public.repo}`">View on GitHub</a></div>
         </div>
     </div>
 </template>
