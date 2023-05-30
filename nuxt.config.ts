@@ -41,7 +41,7 @@ export default async () => {
         runtimeConfig: {
             public: {
                 configuration: pluginSetings,
-                repo: process.env.VERCEL_GIT_REPO_SLUG
+                repo: `${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`
             },
         },
         modules: [
