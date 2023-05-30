@@ -4,6 +4,9 @@ overrides:
   '@typescript-eslint/eslint-plugin': 5.12.0
 
 dependencies:
+  '@nuxtjs/robots':
+    specifier: ^3.0.0
+    version: 3.0.0
   '@nuxtjs/tailwindcss':
     specifier: ^6.6.6
     version: 6.7.0(webpack@5.83.1)
@@ -1047,6 +1050,16 @@ packages:
       - vti
       - vue-tsc
     dev: true
+
+  /@nuxtjs/robots@3.0.0:
+    resolution: {integrity: sha512-qsHGW1KXBvV5Kq7u3huPnFCUTbHS4Fk8Za2mNPgmUXcwLgp3exvhPtdZfIdjrCF/aZk3A8OZONNmGghs6CecBA==}
+    dependencies:
+      '@nuxt/kit': 3.5.1
+      h3: 1.6.6
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
 
   /@nuxtjs/tailwindcss@6.7.0(webpack@5.83.1):
     resolution: {integrity: sha512-Ixm4hWFKoM2bbtixJZ6/+bm1y/aZPefOkfED5zV4P3X/18HVJQfGD3icTHxDEc9hqRxMV0DVPwpBM13eo1yTlg==}

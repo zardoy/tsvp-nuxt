@@ -67,7 +67,7 @@ onMounted(() => {
                         <a class="button bg-blue-500"
                             href="https://marketplace.visualstudio.com/items?itemName=zardoy.ts-essential-plugins">Install</a>
                         <a class="button bg-slate-300 text-black"
-                            href="https://github.com/zardoy/typjescript-vscode-plugins">GitHub</a>
+                            href="https://github.com/zardoy/typescript-vscode-plugins">GitHub</a>
                     </div>
                     <div ref="scrollDownHint" class="scroll-down-container">
                         <div class="arrows-down">

@@ -11,10 +11,10 @@
   },
   "devDependencies": {
     "@types/node": "^18",
-    "nuxt": "^3.5.1",
     "eslint": "^8.9.0",
     "eslint-config-zardoy": "^0.2.10",
-    "eslint-plugin-vue": "^8.4.1"
+    "eslint-plugin-vue": "^8.4.1",
+    "nuxt": "^3.5.1"
   },
   "pnpm": {
     "overrides": {
@@ -22,6 +22,7 @@
     }
   },
   "dependencies": {
+    "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.6.6",
     "@zardoy/vit": "^0.1.8",
     "autoprefixer": "^10.4.14",

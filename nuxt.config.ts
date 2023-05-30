@@ -14,7 +14,7 @@ export default async () => {
     if (!fs.existsSync(configTypeJson)) {
         const configurationType = 'https://raw.githubusercontent.com/zardoy/typescript-vscode-plugins/develop/src/configurationType.ts'
         const pipeline = promisify(stream.pipeline)
-        fs.mkdirSync('./.nuxt', {recursive: true,})
+        fs.mkdirSync('./.nuxt', { recursive: true, })
         console.log('downloading config file')
         await pipeline(
             got.stream(configurationType),
@@ -35,20 +35,27 @@ export default async () => {
     const pluginSetings = fs.readFileSync(configTypeJson, 'utf8');
 
     return defineNuxtConfig({
-        // experimental: {
-        //     typedPages: true,
-        // },
+        experimental: {
+            typedPages: true,
+        },
         runtimeConfig: {
             public: {
                 configuration: pluginSetings,
+                repo: process.env.GITHUB_REPOSITORY
             },
-            // test: 5
         },
         modules: [
             "@nuxtjs/tailwindcss",
+            "@nuxtjs/robots"
         ],
         app: {
             baseURL: './',
+            head: {
+                title: 'TypeScript Essentials Plugins Homepage',
+                meta: [
+                    { name: 'description', content: 'TypeScript Essentials Plugins is a Visual Studio Code (VS Code) extension for better React, Vue and TypeScript experience' }
+                ],
+            },
         },
         // typescript: {
         //     // typeCheck: 'build',
