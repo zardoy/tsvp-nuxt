@@ -3,15 +3,16 @@ import CogIcon from 'vue-material-design-icons/Cog.vue';
 import StarIcon from 'vue-material-design-icons/Star.vue';
 import CompassIcon from 'vue-material-design-icons/CompassOutline.vue';
 import VueMarkdown from 'vue-markdown-render'
+import pluginConfigJson from '../.nuxt/pluginConfig.json'
 
 const runtimeConfig = useRuntimeConfig()
-const pluginConfigProps = JSON.parse(runtimeConfig.public.configuration).properties
+
 </script>
 <template>
     <div class="flex-col">
         <div class="m-8 min-h-[1000px]">
             <h2 class="text-6xl">Featuring</h2>
-            <div class="flex flex-col text-2xl m-4">
+            <div class="flex flex-col text-2xl m-4 space-y-3">
                 <div class="flex">
                     <CogIcon :size="30" /> <span class="ml-2">70+ Settings <span class="text-gray-400"> - not only allows to
                             configure every aspect of the plugin itself, but also allows to configure built-in TypeScript
@@ -38,7 +39,7 @@ const pluginConfigProps = JSON.parse(runtimeConfig.public.configuration).propert
                     </tr>
                 </thead>
                 <template
-                    v-for="[key, { recommended, description }] in Object.entries(pluginConfigProps) as [string, any][]">
+                    v-for="[key, { recommended, description }] in Object.entries(pluginConfigJson.properties) as [string, any][]">
                     <tr v-if="recommended !== undefined" :key="key" class="py-4">
                         <td>
                             <code>"tsEssentialsPlugins.{{ key }}": {{ recommended === '' ? 'true' : `"${recommended}"` }}</code>
@@ -50,7 +51,8 @@ const pluginConfigProps = JSON.parse(runtimeConfig.public.configuration).propert
                     </tr>
                 </template>
             </table>
-            <div class="mt-5 text-sm">Build with Nuxt. <a class="font-bold" :href="`https://github.com/${runtimeConfig.public.repo}`">View on GitHub</a></div>
+            <div class="mt-5 text-sm">Build with Nuxt. <a class="font-bold"
+                    :href="`https://github.com/${runtimeConfig.public.repo}`">View on GitHub</a></div>
         </div>
     </div>
 </template>
@@ -64,7 +66,7 @@ h2 {
 }
 
 code {
-    font-size: 0.75em;
+    font-size: 0.9em;
 }
 
 table,

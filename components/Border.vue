@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import LinkButton from '~/components/LinkButton.vue';
+
 const mainContentAreaThreshold = 1000
 
 const border = ref<HTMLDivElement>()
@@ -49,7 +51,7 @@ const updateBorder = () => {
 }
 
 onMounted(() => {
-    document.addEventListener('scroll', updateBorder, { passive: true, })
+    document.addEventListener('scroll', updateBorder, { passive: true })
     updateBorder()
 })
 
@@ -64,10 +66,11 @@ onMounted(() => {
                 </div>
                 <div class="h-0">
                     <div class="flex justify-center space-x-2 pt-5">
-                        <a class="button bg-blue-500"
-                            href="https://marketplace.visualstudio.com/items?itemName=zardoy.ts-essential-plugins">Install</a>
-                        <a class="button bg-slate-300 text-black"
-                            href="https://github.com/zardoy/typescript-vscode-plugins">GitHub</a>
+                        <LinkButton color="dodgerblue" hover-color="rgba(30, 143, 255, 0.3)"
+                            href="https://marketplace.visualstudio.com/items?itemName=zardoy.ts-essential-plugins">Install
+                            Now</LinkButton>
+                        <LinkButton color="rgb(43, 54, 255)" hover-color="rgba(43, 54, 255, 0.3)"
+                            href="https://github.com/zardoy/typescript-vscode-plugins">View on GitHub</LinkButton>
                     </div>
                     <div ref="scrollDownHint" class="scroll-down-container">
                         <div class="arrows-down">
@@ -109,11 +112,13 @@ $border-width: 50px;
     0%,
     50%,
     100% {
-        opacity: 0.5;
+        $white: 255 * 0.5;
+        background-color: rgb($white, $white, $white);
     }
 
     25% {
-        opacity: 0.2;
+        $white: 255 * 0.2;
+        background-color: rgb($white, $white, $white);
     }
 }
 
@@ -153,28 +158,44 @@ $border-width: 50px;
     }
 
     .arrows-down {
+        margin-top: 10px;
 
-        div {
-            $size: 18px;
-            width: $size;
-            height: $size;
-            border: 2px solid white;
-            border-top: none;
-            border-left: none;
-            transform: rotate(45deg) scale(1.8);
+        $width: 26px;
+        $height: 4px;
+
+        div::before,
+        div::after {
+            content: '';
+            display: block;
+            width: $width;
+            height: $height;
+            transform: translateX(50%) rotate(-40deg);
+            transform-origin: left center;
+            background-color: white;
             /* animation: blink 1.5s linear 0 infinite normal both; */
             animation-name: blink;
             animation-duration: 6s;
             animation-iteration-count: infinite;
             animation-fill-mode: both;
+            animation-delay: var(--delay);
+        }
+
+        div::before {
+            width: $width;
+            transform: translateX(-34%) rotate(40deg) translateY($height);
+            transform-origin: right center;
+        }
+
+        div {
+            margin-top: 6px;
         }
 
         div:nth-child(2) {
-            animation-delay: 0.25s;
+            --delay: 0.25s;
         }
 
         div:nth-child(3) {
-            animation-delay: 0.5s;
+            --delay: 0.5s;
         }
     }
 }
@@ -224,14 +245,5 @@ $border-width: 50px;
     align-items: center;
     font-size: 11px;
     height: calc(100vh - 75px);
-}
-
-.button {
-    font-size: 1.1rem;
-    border-radius: 0.25rem;
-    padding-left: 22px;
-    padding-right: 22px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 </style>
