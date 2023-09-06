@@ -13,15 +13,10 @@
   "devDependencies": {
     "@types/node": "^18",
     "eslint": "^8.9.0",
-    "eslint-config-zardoy": "^0.2.10",
-    "eslint-plugin-vue": "^8.4.1",
+    "eslint-config-zardoy": "^0.2.17",
+    "eslint-plugin-vue": "^9.17.0",
     "nuxt": "^3.7.0",
     "vue-tsc": "^1.8.8"
-  },
-  "pnpm": {
-    "overrides": {
-      "@typescript-eslint/eslint-plugin": "5.12.0"
-    }
   },
   "dependencies": {
     "@nuxtjs/robots": "^3.0.0",

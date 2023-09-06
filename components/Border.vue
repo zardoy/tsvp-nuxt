@@ -27,13 +27,13 @@ const updateBorder = () => {
     const featuringVisible = scrollY > featuringVisibleThreashold
     const featuresEl = featuresRef.value?.$el
     if (featuresEl) {
-        featuresEl.style.opacity = !initialContentVisible ? '1' : '0'
-        featuresEl.style.pointerEvents = !initialContentVisible ? '' : 'none'
+        featuresEl.style.opacity = initialContentVisible ? '0' : '1'
+        featuresEl.style.pointerEvents = initialContentVisible ? 'none' : ''
     }
 
     initialScreenContainer.value!.style.opacity = initialContentVisible ? '1' : '0'
     initialScreenContainer.value!.style.pointerEvents = initialContentVisible ? '' : 'none'
-    outerContainer.value!.style.display = scrollY < mainContentAreaThreshold + 100 ? '' : 'none'
+    // outerContainer.value!.style.display = scrollY < mainContentAreaThreshold + 100 ? '' : 'none'
 
     // featuringContainer.value!.style.pointerEvents = featuringVisible ? '' : 'none'
 
