@@ -38,18 +38,20 @@ const runtimeConfig = useRuntimeConfig()
                         <th>Extra note</th>
                     </tr>
                 </thead>
-                <template
-                    v-for="[key, { recommended, description }] in Object.entries(pluginConfigJson.properties) as [string, any][]">
-                    <tr v-if="recommended !== undefined" :key="key" class="py-4">
-                        <td>
-                            <code>"tsEssentialsPlugins.{{ key }}": {{ recommended === '' ? 'true' : `"${recommended}"` }}</code>
-                        </td>
-                        <td>
-                            <VueMarkdown v-if="description" :source="description" />
-                            <span v-else class="text-gray-500 italic">(No extra note)</span>
-                        </td>
-                    </tr>
-                </template>
+                <tbody>
+                    <template
+                        v-for="[key, { recommended, description }] in Object.entries(pluginConfigJson.properties) as [string, any][]">
+                        <tr v-if="recommended !== undefined" :key="description" class="py-4">
+                            <td>
+                                <code>"tsEssentialsPlugins.{{ key }}": {{ recommended === '' ? 'true' : `"${recommended}"` }}</code>
+                            </td>
+                            <td>
+                                <VueMarkdown v-if="description" :source="description" />
+                                <span v-else class="text-gray-500 italic">(No extra note)</span>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
             </table>
             <div class="mt-5 text-sm">Build with Nuxt. <a class="font-bold"
                     :href="`https://github.com/${runtimeConfig.public.repo}`">View on GitHub</a></div>
