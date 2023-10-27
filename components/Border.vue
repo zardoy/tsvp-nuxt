@@ -64,19 +64,22 @@ onMounted(() => {
                     <h1 class="title">TS</h1>
                     <div ref="border" class="border" />
                 </div>
-                <div class="h-0">
-                    <div class="flex justify-center space-x-2 pt-5">
-                        <LinkButton color="dodgerblue" hover-color="rgba(30, 143, 255, 0.3)"
-                            href="https://marketplace.visualstudio.com/items?itemName=zardoy.ts-essential-plugins">Install
-                            Now</LinkButton>
-                        <LinkButton color="rgb(43, 54, 255)" hover-color="rgba(43, 54, 255, 0.3)"
-                            href="https://github.com/zardoy/typescript-vscode-plugins">View on GitHub</LinkButton>
-                    </div>
-                    <div ref="scrollDownHint" class="scroll-down-container">
-                        <div class="arrows-down">
-                            <div />
-                            <div />
-                            <div />
+                <div class="h-[95px] w-0">
+                    <div class="fixed left-0 right-0">
+                        <div class="flex justify-center space-x-2 pt-5 pointer-events-auto">
+                            <LinkButton color="dodgerblue" hover-color="rgba(30, 143, 255, 0.3)"
+                                href="https://marketplace.visualstudio.com/items?itemName=zardoy.ts-essential-plugins">
+                                Install Now
+                            </LinkButton>
+                            <LinkButton color="rgb(43, 54, 255)" hover-color="rgba(43, 54, 255, 0.3)"
+                                href="https://github.com/zardoy/typescript-vscode-plugins">View on GitHub</LinkButton>
+                        </div>
+                        <div ref="scrollDownHint" class="scroll-down-container">
+                            <div class="arrows-down">
+                                <div />
+                                <div />
+                                <div />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,8 +92,6 @@ onMounted(() => {
     <Features ref="featuresRef" class="mt-[2000px]" />
 </template>
 <style scoped lang="scss">
-$border-width: 50px;
-
 .main-outer-container {
     position: fixed;
     inset: 0;
@@ -100,6 +101,7 @@ $border-width: 50px;
     flex-direction: column;
     overflow: hidden;
     will-change: contents;
+    pointer-events: none;
 }
 
 .main-container {
@@ -131,10 +133,10 @@ $border-width: 50px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    margin: 60px 80px;
+    margin: calc(var(--border) + 10px) calc(var(--border) + 30px);
     white-space: nowrap;
-    font-size: 180px;
-    line-height: 180px;
+    font-size: var(--font-size);
+    line-height: 1;
     font-weight: bold;
     color: #54a1e7;
 }
@@ -148,7 +150,7 @@ $border-width: 50px;
     justify-content: flex-end;
     align-items: center;
     transition: opacity 0.5s;
-    margin-bottom: $border-width + 30px;
+    margin-bottom: calc(var(--border) + 30px);
     pointer-events: none;
 
 
@@ -201,16 +203,24 @@ $border-width: 50px;
 }
 
 .border-container {
-    width: 600px;
+    aspect-ratio: 1;
     height: 600px;
     position: relative;
+    --border: 50px;
+    --font-size: 180px;
+
+    @media (max-width: 900px) {
+        height: 300px;
+        --border: 30px;
+        --font-size: 90px;
+    }
 }
 
 .border {
     position: absolute;
     width: 100%;
     height: 100%;
-    border: $border-width;
+    border-width: var(--border);
     border-color: #007acc;
     border-style: solid;
     $outline-color: #08c2fd;
